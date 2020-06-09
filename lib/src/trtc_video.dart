@@ -83,6 +83,19 @@ class TrtcVideo {
     return await _channel.invokeMethod('startRemoteView', {'userId': userId, 'viewId': viewId});
   }
 
+  /*
+   * 8.7 开始显示远端用户的辅路画面（TRTCVideoStreamTypeSub，一般用于屏幕分享）
+   * - startRemoteView() 用于显示主路画面（TRTCVideoStreamTypeBig，一般用于摄像头）。
+   * - startRemoteSubStreamView() 用于显示辅路画面（TRTCVideoStreamTypeSub，一般用于屏幕分享）。
+   *
+   * @param userId 对方的用户标识
+   * @param view 渲染控件
+   * @note 请在 onUserSubStreamAvailable 回调后再调用这个接口。
+   */
+  static Future<void> startRemoteSubStreamView(String userId, int viewId) async {
+    return await _channel.invokeMethod('startRemoteSubStreamView', {'userId': userId, 'viewId': viewId});
+  }
+
   /// 停止显示远端视频画面，同时不再拉取该远端用户的视频数据流
   ///
   /// [userId] 对方的用户标识
