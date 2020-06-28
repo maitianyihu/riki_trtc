@@ -7,6 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dce2ed9c-d7f4-4ec5-89f2-2ab5a025e8c5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/android/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
