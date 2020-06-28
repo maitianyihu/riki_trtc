@@ -238,6 +238,11 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
                 mManager.setAudioRoute(route);
                 break;
 
+            case "enableAudioVolumeEvaluation":
+                int interval = numberToIntValue((Number) call.argument("interval"));
+                mManager.enableAudioVolumeEvaluation(interval);
+                break;
+
             case "muteRemoteAudio":
                 String userId4 = call.argument("userId");
                 boolean mote2 = numberToBoolValue((Boolean) call.argument("mote"));

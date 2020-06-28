@@ -29,6 +29,15 @@ class TrtcAudio {
   static Future<void> muteLocalAudio(bool mote) async {
     return await _channel.invokeMethod('muteLocalAudio', {'mote': mote});
   }
+  /*
+  *
+  * 启用音量大小提示
+  * 开启此功能后，SDK 会在 onUserVoiceVolume() 中反馈对每一路声音音量大小值的评估。 如需打开此功能，请在 startLocalAudio() 之前调用。
+  * interval	设置 onUserVoiceVolume 回调的触发间隔，单位为ms，最小间隔为100ms，如果小于等于0则会关闭回调，建议设置为300ms；
+  * */
+  static Future<void> enableAudioVolumeEvaluation(int interval) async {
+    return await _channel.invokeMethod('enableAudioVolumeEvaluation', {'interval': interval});
+  }
 
   /// 设置音频路由
   ///

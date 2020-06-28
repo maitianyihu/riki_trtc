@@ -35,6 +35,7 @@ static NSString * const setRemoteViewRotation = @"setRemoteViewRotation";/** 设
 static NSString * const startLocalAudio = @"startLocalAudio";/** 开启本地音频的采集和上行*/
 static NSString * const stopLocalAudio = @"stopLocalAudio";/** 关闭本地音频的采集和上行*/
 static NSString * const muteLocalAudio = @"muteLocalAudio";/** 静音本地的音频*/
+static NSString * const enableAudioVolumeEvaluation = @"enableAudioVolumeEvaluation";/** 启用音量大小提示*/
 static NSString * const setAudioRoute = @"setAudioRoute";/** 设置音频路由*/
 static NSString * const muteRemoteAudio = @"muteRemoteAudio";/** 静音某一个用户的声音，同时不再拉取该远端用户的音频数据流*/
 static NSString * const muteAllRemoteAudio = @"muteAllRemoteAudio";/** 静音所有用户的声音，同时不再拉取远端用户的音频数据流*/
@@ -228,6 +229,9 @@ static NSString * const setRemoteSubStreamViewRotation = @"setRemoteSubStreamVie
     }else if ([setAudioRoute isEqualToString:call.method]) {
         int route = [self numberToIntValue:args[@"route"]];
         [self.trtc setAudioRoute:route];
+    }else if ([enableAudioVolumeEvaluation isEqualToString:call.method]) {
+        int interval = [self numberToIntValue:args[@"interval"]];
+        [self.trtc enableAudioVolumeEvaluation:interval];
     }else if ([muteRemoteAudio isEqualToString:call.method]) {
         NSString * userId = args[@"userId"];
         BOOL mote = [self numberToBoolValue:args[@"mote"]];
@@ -472,6 +476,22 @@ static NSString * const setRemoteSubStreamViewRotation = @"setRemoteSubStreamVie
     }
     
 }
+#pragma mark - 音量监听
+- (void)onUserVoiceVolume:(NSArray<TRTCVolumeInfo *> *)userVolumes totalVolume:(NSInteger)totalVolume{
+    FlutterEventSink sink = _eventSink;
+    if(sink){
+        if(userVolumes.count > 0){
+            NSMutableArray * volumeInfos = [NSMutableArray array];
+            for (TRTCVolumeInfo * volumeInfo in userVolumes) {
+                NSDictionary * dic = @{@"userId":volumeInfo.userId,@"volume":[NSString stringWithFormat:@"%d",volumeInfo.volume]};
+                [volumeInfos addObject:dic];
+            }
+            sink(@{@"method": @{@"name": @"onUserVoiceVolume",@"volumeInfos":volumeInfos}});
+        }
+       
+    }
+}
+
 #pragma mark- 网络质量监听
 - (void)onNetworkQuality:(TRTCQualityInfo *)localQuality remoteQuality:(NSArray<TRTCQualityInfo*>*)remoteQuality{
     FlutterEventSink sink = _eventSink;

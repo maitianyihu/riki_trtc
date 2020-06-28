@@ -270,4 +270,28 @@ public class TrtcCloudListenerImpl extends TRTCCloudListener {
             eventSink.success(returnMap);
         }
     }
+
+    @Override
+    public void onUserVoiceVolume(ArrayList<TRTCCloudDef.TRTCVolumeInfo> arrayList, int i) {
+        Log.i(TAG, "onUserVoiceVolume");
+        EventChannel.EventSink eventSink = mWefListener.get();
+        if (eventSink != null) {
+            HashMap<String, Object> method = new HashMap<>();
+            ArrayList<Map<String, String>> retureList = new ArrayList<>();
+            if (arrayList != null && arrayList.size() > 0) {
+                for (TRTCCloudDef.TRTCVolumeInfo info : arrayList) {
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("userId", info.userId);
+                    map.put("volume", String.valueOf(info.volume));
+                    retureList.add(map);
+                }
+            }
+            method.put("name", "onUserVoiceVolume");
+            method.put("volumeInfos", retureList);
+            HashMap<String, Object> returnMap = new HashMap<>();
+            returnMap.put("method", method);
+            eventSink.success(returnMap);
+
+        }
+    }
 }

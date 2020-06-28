@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_trtc_plugin/flutter_trtc_plugin.dart';
 
@@ -40,6 +41,7 @@ class TrtcBase {
     Function() onConnectionRecovery,
     Function(TrtcUserQuality localQuality, List<TrtcUserQuality> remoteQuality) onNetworkQuality,
     Function(int viewId) onTrtcViewClick,
+    Function(List<Map<String,String>> volumeInfos) onUserVoiceVolume,
   }) async {
     _onError = onError;
     _onWarning = onWarning;
@@ -58,6 +60,7 @@ class TrtcBase {
     _onConnectionRecovery = onConnectionRecovery;
     _onTrtcViewClick = onTrtcViewClick;
     _onNetworkQuality = onNetworkQuality;
+    _onUserVoiceVolume = onUserVoiceVolume;
 
     print('registerCallback 执行');
 
@@ -88,6 +91,7 @@ class TrtcBase {
     _onConnectionRecovery = null;
     _onTrtcViewClick = null;
     _onNetworkQuality = null;
+    _onUserVoiceVolume = null;
 
     _streamSubscription.cancel().then((_) {
       _streamSubscription = null;
@@ -163,6 +167,11 @@ class TrtcBase {
   /// [userId] 用户标识
   /// [available] 声音是否开启
   static void Function(String userId, bool available) _onUserAudioAvailable;
+
+  /*
+  *用于提示音量大小的回调，包括每个 userId 的音量 userId用户ID volume音量值
+  * */
+  static void Function(List<Map<String,String>>) _onUserVoiceVolume;
 
   /// 用户是否开启屏幕分享
   ///
@@ -273,6 +282,14 @@ class TrtcBase {
           bool available = args['available'];
           _onUserAudioAvailable(userId, available);
         }
+        break;
+
+      case 'onUserVoiceVolume':
+        if(_onUserVoiceVolume != null){
+          List<Map<String,String>> volumeInfos = args["volumeInfos"];
+          _onUserVoiceVolume(volumeInfos);
+        }
+
         break;
 
       case 'onUserSubStreamAvailable':
