@@ -478,16 +478,18 @@ static NSString * const setRemoteSubStreamViewRotation = @"setRemoteSubStreamVie
 }
 #pragma mark - 音量监听
 - (void)onUserVoiceVolume:(NSArray<TRTCVolumeInfo *> *)userVolumes totalVolume:(NSInteger)totalVolume{
-    FlutterEventSink sink = _eventSink;
+   FlutterEventSink sink = _eventSink;
     if(sink){
+        NSMutableArray * volumeInfos = [NSMutableArray array];
         if(userVolumes.count > 0){
-            NSMutableArray * volumeInfos = [NSMutableArray array];
+            
             for (TRTCVolumeInfo * volumeInfo in userVolumes) {
-                NSDictionary * dic = @{@"userId":volumeInfo.userId,@"volume":[NSString stringWithFormat:@"%d",volumeInfo.volume]};
+                NSDictionary * dic = @{@"userId":volumeInfo.userId?:@"",@"volume":[NSString stringWithFormat:@"%ld",volumeInfo.volume?:0]};
                 [volumeInfos addObject:dic];
             }
-            sink(@{@"method": @{@"name": @"onUserVoiceVolume",@"volumeInfos":volumeInfos}});
+            
         }
+       sink(@{@"method": @{@"name": @"onUserVoiceVolume",@"volumeInfos":volumeInfos}});
        
     }
 }
