@@ -6,7 +6,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dce2ed9c-d7f4-4ec5-89f2-2ab5a025e8c5" name="Default" comment="" />
+    <list default="true" id="dce2ed9c-d7f4-4ec5-89f2-2ab5a025e8c5" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin/FlutterTrtcPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin/FlutterTrtcPlugin.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +42,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
