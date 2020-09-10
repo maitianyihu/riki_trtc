@@ -49,6 +49,7 @@ static NSString * const startRemoteSubStreamView = @"startRemoteSubStreamView";/
 static NSString * const stopRemoteSubStreamView = @"stopRemoteSubStreamView";/**  停止显示远端用户的屏幕分享画面。*/
 static NSString * const setRemoteSubStreamViewFillMode = @"setRemoteSubStreamViewFillMode";/**  设置屏幕分享画面的显示模式。*/
 static NSString * const setRemoteSubStreamViewRotation = @"setRemoteSubStreamViewRotation";/**  设置屏幕分享画面的顺时针旋转角度。*/
+static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定义消息给房间内的所有用户*/
 
 
 
@@ -341,6 +342,12 @@ static NSString * const setRemoteSubStreamViewRotation = @"setRemoteSubStreamVie
             result(nil);
         }else if([@"play" isEqualToString:call.method]||[@"pause" isEqualToString:call.method]||[@"seekTo" isEqualToString:call.method]||[@"setRate" isEqualToString:call.method]||[@"setBitrateIndex" isEqualToString:call.method]||[@"dispose" isEqualToString:call.method]){
             [self onMethodCall:call result:result];
+        }else if(sendCustomCmdMsg = call.method){
+            NSDictionary *argMap = call.arguments;
+            NSLog(@"开始字典转date");
+            NSData *data = [NSJSONSerialization dataWithJSONObject:argMap options:NSJSONWritingPrettyPrinted error:nil];
+            NSLog(@"转成功");
+            [self.trtc sendCustomCmdMsg:1 data:data reliable:NO ordered:YES];
         }else {
         result(FlutterMethodNotImplemented);
     }
