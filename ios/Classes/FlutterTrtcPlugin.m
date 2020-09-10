@@ -342,7 +342,7 @@ static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定�
             result(nil);
         }else if([@"play" isEqualToString:call.method]||[@"pause" isEqualToString:call.method]||[@"seekTo" isEqualToString:call.method]||[@"setRate" isEqualToString:call.method]||[@"setBitrateIndex" isEqualToString:call.method]||[@"dispose" isEqualToString:call.method]){
             [self onMethodCall:call result:result];
-        }else if(sendCustomCmdMsg = call.method){
+        }else if([sendCustomCmdMsg isEqualToString:call.method]){
             NSDictionary *argMap = call.arguments;
             NSLog(@"开始字典转date");
             NSData *data = [NSJSONSerialization dataWithJSONObject:argMap options:NSJSONWritingPrettyPrinted error:nil];
