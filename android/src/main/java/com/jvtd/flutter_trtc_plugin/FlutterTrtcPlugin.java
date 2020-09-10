@@ -1,4 +1,4 @@
-package com.jvtd.flutter_trtc_plugin;
+package android.src.main.java.com.jvtd.flutter_trtc_plugin;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,6 +8,8 @@ import androidx.collection.LongSparseArray;
 
 import com.tencent.trtc.TRTCCloudDef;
 
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 import io.flutter.plugin.common.EventChannel;
@@ -18,6 +20,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.view.FlutterNativeView;
 import io.flutter.view.TextureRegistry;
+
 
 /**
  * FlutterTrtcPlugin
@@ -312,14 +315,20 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
                 break;
 
             case "sendCustomCmdMsg":
-                Map<String, Object> arguments = (Map<String, Object>) methodCall.arguments;
+                HashMap<String, Object> arguments = (HashMap<String, Object>) call.arguments;
                 byte[] bytes = null;
                 try {
-                    bytes = JsonSerilizable.serilizableForMap(arguments).getBytes();
+
+                    ByteArrayOutputStream os = new ByteArrayOutputStream();
+                    ObjectOutputStream oos = new ObjectOutputStream(os);
+                    oos.writeObject(arguments);
+                    bytes = os.toByteArray();
+                    oos.close();
+                    os.close();
                 } catch (Exception e) {
                     System.out.println("安卓中的sendCusMsg方法调用时map到byte[]转换异常");
                 }
-                mManager.sendCustomCmdMsg(2,bytes,false,true);
+                mManager.sendCustomCmdMsg(2, bytes, false, true);
                 break;
 
             case "play":
