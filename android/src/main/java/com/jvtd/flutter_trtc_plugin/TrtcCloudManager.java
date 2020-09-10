@@ -325,6 +325,12 @@ public class TrtcCloudManager
     }
   }
 
+  public void sendCustomCmdMsg(int cmdID, byte[] data,boolean reliable,boolean ordered)
+  {
+    if(mTRTCCloud != null){
+      mTRTCCloud.sendCustomCmdMsg(cmdID, data,reliable,ordered);
+    }
+  }
 
 //  /**
 //   * 对进房的设置进行初始化

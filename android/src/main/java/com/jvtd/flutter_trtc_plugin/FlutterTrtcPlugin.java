@@ -310,6 +310,18 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
                 }
                 result.success(null);
                 break;
+
+            case "sendCustomCmdMsg":
+                Map<String, Object> arguments = (Map<String, Object>) methodCall.arguments;
+                byte[] bytes = null;
+                try {
+                    bytes = JsonSerilizable.serilizableForMap(arguments).getBytes();
+                } catch (Exception e) {
+                    System.out.println("安卓中的sendCusMsg方法调用时map到byte[]转换异常");
+                }
+                mManager.sendCustomCmdMsg(2,bytes,false,true);
+                break;
+
             case "play":
             case "pause":
             case "seekTo":

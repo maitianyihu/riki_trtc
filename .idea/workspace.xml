@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dce2ed9c-d7f4-4ec5-89f2-2ab5a025e8c5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/FlutterTrtcPlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/FlutterTrtcPlugin.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin/TrtcCloudManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin/TrtcCloudManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
