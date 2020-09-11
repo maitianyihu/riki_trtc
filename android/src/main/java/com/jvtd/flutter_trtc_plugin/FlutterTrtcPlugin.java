@@ -1,4 +1,4 @@
-package android.src.main.java.com.jvtd.flutter_trtc_plugin;
+package com.jvtd.flutter_trtc_plugin;
 
 import android.content.Context;
 import android.util.Log;
