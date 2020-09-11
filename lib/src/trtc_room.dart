@@ -50,4 +50,9 @@ class TrtcRoom {
   static Future<void> switchRole(int role) async {
     return await _channel.invokeMethod('switchRole');
   }
+
+  static Future<void> sendCustomCmdMsg(String userId,String x,String y) async {
+    return await _channel.invokeMethod('sendCustomCmdMsg',{'userId':userId,'x':x,'y':y});
+  }
+
 }
