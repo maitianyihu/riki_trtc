@@ -7,8 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dce2ed9c-d7f4-4ec5-89f2-2ab5a025e8c5" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin/FlutterTrtcPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin/FlutterTrtcPlugin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/android/src/main/java/com/jvtd/flutter_trtc_plugin" />
-    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -85,5 +85,19 @@
       <updated>1591670329369</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1128" y="627" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1600153515691">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1128" y="627" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.2560.1417/-1080.23.1080.1897@0.23.2560.1417" timestamp="1600153515691" />
+    <state x="282" y="295" key="SettingsEditor" timestamp="1600153638620">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="282" y="295" key="SettingsEditor/0.23.2560.1417/-1080.23.1080.1897@0.23.2560.1417" timestamp="1600153638620" />
+    <state x="1003" y="635" width="695" height="486" key="find.popup" timestamp="1600153753861">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1003" y="635" width="695" height="486" key="find.popup/0.23.2560.1417/-1080.23.1080.1897@0.23.2560.1417" timestamp="1600153753861" />
   </component>
 </project>
