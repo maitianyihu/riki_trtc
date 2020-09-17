@@ -8,6 +8,7 @@ import androidx.collection.LongSparseArray;
 
 import com.tencent.trtc.TRTCCloudDef;
 
+import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
@@ -316,19 +317,19 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
 
             case "sendCustomCmdMsg":
                 HashMap<String, Object> arguments = (HashMap<String, Object>) call.arguments;
+                JSONObject json = new JSONObject(arguments);
                 byte[] bytes = null;
                 try {
-
                     ByteArrayOutputStream os = new ByteArrayOutputStream();
                     ObjectOutputStream oos = new ObjectOutputStream(os);
-                    oos.writeObject(arguments);
+                    oos.writeObject(json.toString());
                     bytes = os.toByteArray();
                     oos.close();
                     os.close();
                 } catch (Exception e) {
                     System.out.println("安卓中的sendCusMsg方法调用时map到byte[]转换异常");
                 }
-                mManager.sendCustomCmdMsg(2, bytes, false, true);
+                mManager.sendCustomCmdMsg(1, bytes, false, true);
                 break;
 
             case "play":
