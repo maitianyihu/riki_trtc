@@ -194,7 +194,9 @@
                         @"event":@"progress",
                         @"progress":@(progressInt),
                         @"duration":@(durationint),
-                        @"playable":@(playableDurationInt)
+                        @"playable":@(playableDurationInt),
+                        @"width":@([player width]),
+                        @"height":@([player height])
                     });
                 }
                 
