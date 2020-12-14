@@ -399,12 +399,12 @@ static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定�
         //_players= nil;
         [self disposeAllPlayers];
         result(nil);
-    }else if([@"setRenderMode" isEqualToString call.method]){
+    }else if([@"setRenderMode" isEqualToString:call.method]){
         NSString * mode = [argsMap objectForKey:@"mode"];
         if([mode isEqualToString:@"0"]){
-            [player setRenderMode:0]
+            [player setRenderMode:0];
         }else if([mode isEqualToString:@"1"]){
-            [player setRenderMode:1]
+            [player setRenderMode:1];
         }
     }
     
