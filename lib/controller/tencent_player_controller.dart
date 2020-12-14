@@ -77,6 +77,8 @@ class TencentPlayerController extends ValueNotifier<TencentPlayerValue> {
             position: Duration(milliseconds: map['progress']),
             duration: Duration(milliseconds: map['duration']),
             playable: Duration(milliseconds: map['playable']),
+            size: Size(map['width']?.toDouble() ?? 0.0,
+                map['height']?.toDouble() ?? 0.0),
           );
           break;
         case 'loading':

@@ -17,7 +17,6 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/flutter_trtc_plugin/example/ios/.symlinks/plugins/fluttertoast/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/flutter_trtc_plugin/example/ios/.symlinks/plugins/fluttertoast/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/flutter_trtc_plugin/example/ios/.symlinks/plugins/fluttertoast/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/flutter_trtc_plugin/example/ios/Flutter/App.framework/flutter_assets/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/fluttertoast/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/fluttertoast/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/fluttertoast/example/.pub" />
