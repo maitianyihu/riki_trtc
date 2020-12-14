@@ -8,6 +8,10 @@ import androidx.collection.LongSparseArray;
 
 import com.tencent.trtc.TRTCCloudDef;
 
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 import io.flutter.plugin.common.EventChannel;
@@ -18,6 +22,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.view.FlutterNativeView;
 import io.flutter.view.TextureRegistry;
+
 
 /**
  * FlutterTrtcPlugin
@@ -238,11 +243,6 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
                 mManager.setAudioRoute(route);
                 break;
 
-            case "enableAudioVolumeEvaluation":
-                int interval = numberToIntValue((Number) call.argument("interval"));
-                mManager.enableAudioVolumeEvaluation(interval);
-                break;
-
             case "muteRemoteAudio":
                 String userId4 = call.argument("userId");
                 boolean mote2 = numberToBoolValue((Boolean) call.argument("mote"));
@@ -315,6 +315,14 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
                 }
                 result.success(null);
                 break;
+
+            case "sendCustomCmdMsg":
+                HashMap<String, Object> arguments = (HashMap<String, Object>) call.arguments;
+                JSONObject json = new JSONObject(arguments);
+                byte[] bytes = json.toString().getBytes();
+                mManager.sendCustomCmdMsg(1, bytes, false, true);
+                break;
+
             case "play":
             case "pause":
             case "seekTo":

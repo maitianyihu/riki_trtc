@@ -193,6 +193,15 @@ class TencentPlayerController extends ValueNotifier<TencentPlayerValue> {
     });
     value = value.copyWith(rate: rate);
   }
+
+  /// 设置是视频内容呈现模式
+  /// 设置画面的裁剪模式
+  /// renderMode 裁剪 0, ///< 图像铺满屏幕，不留黑边，如果图像宽高比不同于屏幕宽高比，部分画面内容会被裁剪掉。1,///< 图像适应屏幕，保持画面完整，但如果图像宽高比不同于屏幕宽高比，会有黑边的存在。
+ Future <void> setRenderMode(String renderMode) async{
+   await channel.invokeMethod('setRenderMode', <String, dynamic>{
+     'mode': renderMode,
+   });
+  }
 }
 
 ///视频组件生命周期监听
