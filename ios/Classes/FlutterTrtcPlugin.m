@@ -340,7 +340,7 @@ static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定�
             
            
             result(nil);
-        }else if([@"play" isEqualToString:call.method]||[@"pause" isEqualToString:call.method]||[@"seekTo" isEqualToString:call.method]||[@"setRate" isEqualToString:call.method]||[@"setBitrateIndex" isEqualToString:call.method]||[@"dispose" isEqualToString:call.method]){
+        }else if([@"play" isEqualToString:call.method]||[@"pause" isEqualToString:call.method]||[@"seekTo" isEqualToString:call.method]||[@"setRate" isEqualToString:call.method]||[@"setBitrateIndex" isEqualToString:call.method]||[@"dispose" isEqualToString:call.method]||[@"setRenderMode" isEqualToString:call.method]){
             [self onMethodCall:call result:result];
         }else if([sendCustomCmdMsg isEqualToString:call.method]){
             NSDictionary *argMap = call.arguments;
@@ -395,7 +395,16 @@ static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定�
         //_players= nil;
         [self disposeAllPlayers];
         result(nil);
-    }else{
+    }else if([@"setRenderMode" isEqualToString call.method]){
+        NSString * mode = [argsMap objectForKey:@"mode"];
+        if([mode isEqualToString:@"0"]){
+            [player setRenderMode:0]
+        }else if([mode isEqualToString:@"1"]){
+            [player setRenderMode:1]
+        }
+    }
+    
+    else{
         result(FlutterMethodNotImplemented);
     }
     
