@@ -179,8 +179,8 @@ public class TencentPlayer implements ITXVodPlayListener {
                 progressMap.put("progress", param.getInt(TXLiveConstants.EVT_PLAY_PROGRESS_MS));
                 progressMap.put("duration", param.getInt(TXLiveConstants.EVT_PLAY_DURATION_MS));
                 progressMap.put("playable", param.getInt(TXLiveConstants.EVT_PLAYABLE_DURATION_MS));
-                preparedMap.put("width", player.getWidth());
-                preparedMap.put("height", player.getHeight());
+                progressMap.put("width", player.getWidth());
+                progressMap.put("height", player.getHeight());
                 eventSink.success(progressMap);
                 break;
             case TXLiveConstants.PLAY_EVT_PLAY_LOADING:
