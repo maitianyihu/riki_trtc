@@ -277,10 +277,10 @@ public class TrtcCloudListenerImpl extends TRTCCloudListener {
         EventChannel.EventSink eventSink = mWefListener.get();
         if (eventSink != null) {
             HashMap<String, Object> method = new HashMap<>();
-            ArrayList<Map<String, String>> retureList = new ArrayList<>();
+            ArrayList<HashMap<String, String>> retureList = new ArrayList<>();
             if (arrayList != null && arrayList.size() > 0) {
                 for (TRTCCloudDef.TRTCVolumeInfo info : arrayList) {
-                    HashMap<String, Object> map = new HashMap<>();
+                    HashMap<String, String> map = new HashMap<>();
                     map.put("userId", info.userId);
                     map.put("volume", String.valueOf(info.volume));
                     retureList.add(map);
