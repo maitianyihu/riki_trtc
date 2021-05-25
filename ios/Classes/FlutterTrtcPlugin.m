@@ -51,7 +51,7 @@ static NSString * const stopRemoteSubStreamView = @"stopRemoteSubStreamView";/**
 static NSString * const setRemoteSubStreamViewFillMode = @"setRemoteSubStreamViewFillMode";/**  设置屏幕分享画面的显示模式。*/
 static NSString * const setRemoteSubStreamViewRotation = @"setRemoteSubStreamViewRotation";/**  设置屏幕分享画面的顺时针旋转角度。*/
 static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定义消息给房间内的所有用户*/
-
+static NSString * const setSystemVolumeType = @"setSystemVolumeType";//媒体音量模式还是通话音量模式
 
 
 @interface FlutterTrtcPlugin()<TRTCCloudDelegate,FlutterStreamHandler>
