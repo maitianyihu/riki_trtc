@@ -224,7 +224,9 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
                 boolean mirror = numberToBoolValue((Boolean) call.argument("mirror"));
                 mManager.setVideoEncoderMirror(mirror);
                 break;
-
+            case "enableAudioVolumeEvaluation":
+                int interval = numberToIntValue((Number) call.argument("interval"));
+                mManager.enableAudioVolumeEvaluation(interval);
             case "startLocalAudio":
                 mManager.startLocalAudio();
                 break;

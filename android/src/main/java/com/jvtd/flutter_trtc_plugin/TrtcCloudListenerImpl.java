@@ -20,10 +20,12 @@ public class TrtcCloudListenerImpl extends TRTCCloudListener {
     private static final String TAG = TrtcCloudListenerImpl.class.getName();
 
     private WeakReference<EventChannel.EventSink> mWefListener;
+    private ArrayList<HashMap<String, String>> volumes;
 
     public TrtcCloudListenerImpl(EventChannel.EventSink eventSink) {
         super();
         mWefListener = new WeakReference<>(eventSink);
+        volumes = new ArrayList<>();
     }
 
     @Override
@@ -276,22 +278,21 @@ public class TrtcCloudListenerImpl extends TRTCCloudListener {
         Log.i(TAG, "onUserVoiceVolume");
         EventChannel.EventSink eventSink = mWefListener.get();
         if (eventSink != null) {
+            volumes.clear();
             HashMap<String, Object> method = new HashMap<>();
-            ArrayList<HashMap<String, String>> retureList = new ArrayList<>();
             if (arrayList != null && arrayList.size() > 0) {
                 for (TRTCCloudDef.TRTCVolumeInfo info : arrayList) {
                     HashMap<String, String> map = new HashMap<>();
                     map.put("userId", info.userId);
                     map.put("volume", String.valueOf(info.volume));
-                    retureList.add(map);
+                    volumes.add(map);
                 }
             }
             method.put("name", "onUserVoiceVolume");
-            method.put("volumeInfos", retureList);
+            method.put("volumeInfos", volumes);
             HashMap<String, Object> returnMap = new HashMap<>();
             returnMap.put("method", method);
             eventSink.success(returnMap);
-
         }
     }
 }

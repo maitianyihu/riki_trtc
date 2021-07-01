@@ -51,7 +51,6 @@ static NSString * const stopRemoteSubStreamView = @"stopRemoteSubStreamView";/**
 static NSString * const setRemoteSubStreamViewFillMode = @"setRemoteSubStreamViewFillMode";/**  设置屏幕分享画面的显示模式。*/
 static NSString * const setRemoteSubStreamViewRotation = @"setRemoteSubStreamViewRotation";/**  设置屏幕分享画面的顺时针旋转角度。*/
 static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定义消息给房间内的所有用户*/
-static NSString * const setSystemVolumeType = @"setSystemVolumeType";//媒体音量模式还是通话音量模式
 
 
 @interface FlutterTrtcPlugin()<TRTCCloudDelegate,FlutterStreamHandler>
@@ -65,6 +64,7 @@ static NSString * const setSystemVolumeType = @"setSystemVolumeType";//媒体音
 @property(readonly, nonatomic) NSObject<FlutterBinaryMessenger>* messenger;
 //@property(readonly, nonatomic) NSMutableDictionary* players;
 @property(readonly, nonatomic) NSMutableDictionary* downLoads;
+@property(nonatomic, strong)NSMutableArray *volumeInfos;
 
 @end
 
@@ -81,6 +81,7 @@ static NSString * const setSystemVolumeType = @"setSystemVolumeType";//媒体音
         _messenger = [registrar messenger];
         // _players = [NSMutableDictionary dictionaryWithCapacity:1];
         _downLoads = [NSMutableDictionary dictionaryWithCapacity:1];
+        _volumeInfos = [NSMutableArray array];
     }
     return  self;
 }
@@ -496,17 +497,15 @@ static NSString * const setSystemVolumeType = @"setSystemVolumeType";//媒体音
 - (void)onUserVoiceVolume:(NSArray<TRTCVolumeInfo *> *)userVolumes totalVolume:(NSInteger)totalVolume{
    FlutterEventSink sink = _eventSink;
     if(sink){
-        NSMutableArray * volumeInfos = [NSMutableArray array];
+        [_volumeInfos removeAllObjects];
         if(userVolumes.count > 0){
-            
             for (TRTCVolumeInfo * volumeInfo in userVolumes) {
-                NSDictionary * dic = @{@"userId":volumeInfo.userId?:@"",@"volume":[NSString stringWithFormat:@"%ld",volumeInfo.volume?:0]};
-                [volumeInfos addObject:dic];
+                NSDictionary * dic = @{@"userId":volumeInfo.userId?:@"",@"volume":[NSString stringWithFormat:@"%ld",volumeInfo.volume]};
+                [_volumeInfos addObject:dic];
             }
             
         }
-       sink(@{@"method": @{@"name": @"onUserVoiceVolume",@"volumeInfos":volumeInfos}});
-       
+       sink(@{@"method": @{@"name": @"onUserVoiceVolume",@"volumeInfos":_volumeInfos}});
     }
 }
 

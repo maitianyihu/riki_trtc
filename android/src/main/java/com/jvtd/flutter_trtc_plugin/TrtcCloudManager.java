@@ -109,6 +109,12 @@ public class TrtcCloudManager
     }
   }
 
+  public void enableAudioVolumeEvaluation(int var1){
+    if(mTRTCCloud != null){
+      mTRTCCloud.enableAudioVolumeEvaluation(var1);
+    }
+  }
+
   public void startRemoteView(String userId, int viewId)
   {
     TrtcPlatformView trtcPlatformView = TrtcPlatformViewFactory.shareInstance().getPlatformView(viewId);
