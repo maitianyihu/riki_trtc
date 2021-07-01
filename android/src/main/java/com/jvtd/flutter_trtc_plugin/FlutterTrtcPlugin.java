@@ -162,7 +162,8 @@ public class FlutterTrtcPlugin implements MethodCallHandler, EventChannel.Stream
 
             case "stopRemoteView":
                 String userId2 = call.argument("userId");// 用户标识 [必填]
-                mManager.stopRemoteView(userId2);
+                int streamType = numberToIntValue((Number)call.argument("streamType"));
+                mManager.stopRemoteView(userId2,streamType);
                 break;
 
             case "stopAllRemoteView":

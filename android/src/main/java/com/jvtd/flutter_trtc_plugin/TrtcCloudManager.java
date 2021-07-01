@@ -133,11 +133,11 @@ public class TrtcCloudManager
     }
   }
 
-  public void stopRemoteView(String userId)
+  public void stopRemoteView(String userId,int streamType)
   {
     if (mTRTCCloud != null)
     {
-      mTRTCCloud.stopRemoteView(userId);
+      mTRTCCloud.stopRemoteView(userId,streamType);
     }
   }
 

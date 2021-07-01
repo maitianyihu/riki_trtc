@@ -99,9 +99,10 @@ class TrtcVideo {
   /// 停止显示远端视频画面，同时不再拉取该远端用户的视频数据流
   ///
   /// [userId] 对方的用户标识
+  /// [streamType] 高清大画面 低清小画面  辅流画面   默认高清大画面
   /// @discussion 调用此接口后，SDK 会停止接收该用户的远程视频流，同时会清理相关的视频显示资源。
-  static Future<void> stopRemoteView(String userId) async {
-    return await _channel.invokeMethod('stopRemoteView', {'userId': userId});
+  static Future<void> stopRemoteView(String userId,{int streamType = TrtcVideoStreamType.TRTC_VIDEO_STREAM_TYPE_BIG}) async {
+    return await _channel.invokeMethod('stopRemoteView', {'userId': userId,'streamType':streamType});
   }
 
   /// 停止显示所有远端视频画面，同时不再拉取远端用户的视频数据流

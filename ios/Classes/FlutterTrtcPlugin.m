@@ -201,7 +201,8 @@ static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定�
         }
     }else if ([stopRemoteView isEqualToString:call.method]) {
         NSString * userId = args[@"userId"];
-        [self.trtc stopRemoteView:userId];
+        int streamType = [self numberToIntValue:args[@"streamType"]];
+        [self.trtc stopRemoteView:userId streamType:streamType];
     }else if ([stopAllRemoteView isEqualToString:call.method]) {
         [self.trtc stopAllRemoteView];
     }else if ([muteLocalVideo isEqualToString:call.method]) {
