@@ -502,7 +502,7 @@ static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定�
         [_volumeInfos removeAllObjects];
         if(userVolumes.count > 0){
             for (TRTCVolumeInfo * volumeInfo in userVolumes) {
-                NSDictionary * dic = @{@"userId":volumeInfo.userId?:@"",@"volume":[NSString stringWithFormat:@"%ld",volumeInfo.volume]};
+                NSDictionary * dic = @{@"userId":volumeInfo.userId?:@"",@"volume":[NSNumber numberWithLong:volumeInfo.volume]};
                 [_volumeInfos addObject:dic];
             }
             
