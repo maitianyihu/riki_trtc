@@ -41,7 +41,7 @@ class TrtcBase {
     Function() onConnectionRecovery,
     Function(TrtcUserQuality localQuality, List<TrtcUserQuality> remoteQuality) onNetworkQuality,
     Function(int viewId) onTrtcViewClick,
-    Function(List<Map<String,String>> volumeInfos) onUserVoiceVolume,
+    Function(List<TrtcUserVolume> volumeInfos) onUserVoiceVolume,
   }) async {
     _onError = onError;
     _onWarning = onWarning;
@@ -171,7 +171,7 @@ class TrtcBase {
   /*
   *用于提示音量大小的回调，包括每个 userId 的音量 userId用户ID volume音量值
   * */
-  static void Function(List<Map<String,String>>) _onUserVoiceVolume;
+  static void Function(List<TrtcUserVolume>) _onUserVoiceVolume;
 
   /// 用户是否开启屏幕分享
   ///
@@ -286,8 +286,14 @@ class TrtcBase {
 
       case 'onUserVoiceVolume':
         if(_onUserVoiceVolume != null){
-          List<Map<String,String>> volumeInfos = args["volumeInfos"];
-          _onUserVoiceVolume(volumeInfos);
+          List<dynamic> remoteVolumeList = args['volumeInfos'];
+          List<TrtcUserVolume> userVolumes = [];
+          if(remoteVolumeList != null && remoteVolumeList.length > 0){
+            userVolumes = remoteVolumeList.map((value) {
+              return TrtcUserVolume(value['userId'], value['volume']);
+            }).toList();
+          }
+          _onUserVoiceVolume(userVolumes);
         }
 
         break;

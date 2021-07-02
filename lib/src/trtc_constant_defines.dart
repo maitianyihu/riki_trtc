@@ -140,3 +140,9 @@ class TrtcUserQuality {
 
   TrtcUserQuality(this.userId, this.quality);
 }
+///用于音量监听回调的用户实体
+class TrtcUserVolume{
+  final String userId;
+  final int volume;
+  TrtcUserVolume(this.userId,this.volume);
+}
