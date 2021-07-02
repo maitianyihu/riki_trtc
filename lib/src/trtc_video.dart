@@ -77,10 +77,11 @@ class TrtcVideo {
   ///
   /// [userId] 对方的用户标识
   /// [viewId] 视图ID
+  /// [streamType] 高清大画面 低清小画面  辅流画面   默认高清大画面
   /// @discussion 在收到 SDK 的 [TrtcBase.registerCallback] 中的 onUserVideoAvailable(userId, true) 通知时，可以获知该远程用户开启了视频，
   /// @discussion 此后调用 [startRemoteView] 接口加载该用户的远程画面，可以用 loading 动画优化加载过程中的等待体验。
-  static Future<void> startRemoteView(String userId, int viewId) async {
-    return await _channel.invokeMethod('startRemoteView', {'userId': userId, 'viewId': viewId});
+  static Future<void> startRemoteView(String userId,int viewId,{int streamType = TrtcVideoStreamType.TRTC_VIDEO_STREAM_TYPE_BIG}) async {
+    return await _channel.invokeMethod('startRemoteView', {'userId': userId,'streamType':streamType,'viewId': viewId});
   }
 
   /*
@@ -92,6 +93,7 @@ class TrtcVideo {
    * @param view 渲染控件
    * @note 请在 onUserSubStreamAvailable 回调后再调用这个接口。
    */
+  @Deprecated("最新的SDK里已弃用了startRemoteSubStreamView,请使用 startRemoteView用参数streamType控制")
   static Future<void> startRemoteSubStreamView(String userId, int viewId) async {
     return await _channel.invokeMethod('startRemoteSubStreamView', {'userId': userId, 'viewId': viewId});
   }

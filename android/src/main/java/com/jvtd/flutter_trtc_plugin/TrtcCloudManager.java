@@ -115,7 +115,7 @@ public class TrtcCloudManager
     }
   }
 
-  public void startRemoteView(String userId, int viewId)
+  public void startRemoteView(String userId,int streamType,int viewId)
   {
     TrtcPlatformView trtcPlatformView = TrtcPlatformViewFactory.shareInstance().getPlatformView(viewId);
     if (trtcPlatformView == null)
@@ -129,7 +129,7 @@ public class TrtcCloudManager
     }
     if (mTRTCCloud != null)
     {
-      mTRTCCloud.startRemoteView(userId, txCloudVideoView);
+      mTRTCCloud.startRemoteView(userId, streamType,txCloudVideoView);
     }
   }
 

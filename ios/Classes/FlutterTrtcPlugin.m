@@ -191,10 +191,11 @@ static NSString * const sendCustomCmdMsg = @"sendCustomCmdMsg";/**发送自定�
         [self.trtc stopLocalPreview];
     }else if ([startRemoteView isEqualToString:call.method]) {
         NSString * userId = args[@"userId"];
+        int streamType = [self numberToIntValue:args[@"streamType"]];
         int viewID = [self numberToIntValue:args[@"viewId"]];
         TRTCVideoView * view = [[TRTCPlatformViewFactory shareInstance] getPlatformView:@(viewID)];
         if(view){
-            [self.trtc startRemoteView:userId view:[view getUIView]];
+            [self.trtc startRemoteView:userId streamType:streamType view:[view getUIView]];
             result(@(YES));
         }else{
             result(@(NO));
